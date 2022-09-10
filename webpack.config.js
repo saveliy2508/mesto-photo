@@ -6,7 +6,9 @@ module.exports = {
   entry: './src/index.ts',
   mode: 'development',
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     compress: true,
     port: 8080,
   },
@@ -23,6 +25,13 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      },
+      {
         test: /\.css$/i,
         use: [
           {
@@ -31,6 +40,10 @@ module.exports = {
           },
           'css-loader',
         ],
+      },
+      {
+        test: /\.html$/,
+        use: 'html-loader'
       },
     ],
   },

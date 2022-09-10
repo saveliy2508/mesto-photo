@@ -1,7 +1,127 @@
 @import 'null.scss';
 
-html body {
-  margin: 0;
-  padding: 0;
-  color: red;
+// шрифт не работает
+@font-face {
+  font-family: "Inter";
+  src: url('./../assets/fonts/Inter-Regular.ttf') format('truetype');
+}
+
+body {
+  background-color: black;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+header {
+  color: white;
+}
+
+.header_container {
+  border-bottom: 1px solid #545454;
+  padding: 40px 0;
+
+  .header_brand {
+    font-size: 33px;
+    font-weight: 500;
+  }
+
+  .header_country {
+    font-size: 12px;
+    vertical-align: top;
+  }
+}
+
+.profile_container {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 35px 0 45px 0;
+
+  .profile_info {
+    display: flex;
+    justify-content: start;
+
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+    }
+
+    .profile_infoText {
+      padding: 20px 0 0 18px;
+
+      .profile_name {
+        font-size: 42px;
+        font-weight: 500;
+        margin: 0 35px 15px 0;
+      }
+
+      .profile_description {
+      }
+
+    }
+
+    .profile_change {
+      border: 1px solid white;
+      width: 25px;
+      height: 25px;
+      margin-top: 31px;
+
+      svg {
+        vertical-align: center;
+        margin: 0 auto;
+        padding: 7.5px;
+      }
+    }
+  }
+
+  .profile_control {
+    width: 150px;
+    height: 50px;
+    border: 2px solid #FFFFFF;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 28px;
+
+    .profile_addImage {
+      font-size: 32px;
+    }
+  }
+}
+
+.images_container {
+  .images_item {
+    background: #FFFFFF;
+    border-radius: 10px;
+    max-width: 282px;
+    img {
+      border-radius: 10px 10px 0 0;
+    }
+    .images_itemLabel {
+
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.footer_container {
+  color: #545454;
+  flex: 0 0 auto;
+  padding: 60px 0
 }
