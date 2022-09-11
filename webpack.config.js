@@ -32,13 +32,11 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/i,
+        test: /\.s[ac]ss$/i,
         use: [
-          {
-            loader: 'style-loader',
-            options: { injectType: 'singletonStyleTag' },
-          },
-          'css-loader',
+          "style-loader",
+          "css-loader",
+          "sass-loader",
         ],
       },
       {
