@@ -90,9 +90,47 @@ function changeProfileData() {
     openModal('profile')
 }
 
-function photoItemTemplate(name: string, src: string, isLiked: boolean = false) {
+/**
+ * Функция удаления одной фото
+ */
+function handleDeleteItem(name: string) {
+    const photosData = localStorage.getItem('photos')
+    if (photosData) {
+        let photos = JSON.parse(photosData)
+        photos = photos.filter((item: { name: string }) => item.name !== name)
+        localStorage.setItem('photos', JSON.stringify(photos))
+        setPhotos()
+    }
+}
+
+
+/**
+ * Фунция лайка одного фото
+ */
+
+function handleLikeItem(name: string) {
+    const photosData = localStorage.getItem('photos')
+    if (photosData) {
+        let photos = JSON.parse(photosData)
+        const newPhoto = photos.map((item: { name: string, liked: boolean }) => {
+            if (item.name === name) {
+                return {
+                    ...item,
+                    liked: !item.liked
+                }
+            } else {
+                return item
+            }
+        })
+        localStorage.setItem('photos', JSON.stringify(newPhoto))
+        setPhotos()
+    }
+}
+
+function photoItemTemplate(name: string, src: string) {
     const photoItem = document.createElement('div')
-    photoItem.classList.add('images_item')
+    photoItem.classList.add(`images_item`)
+    photoItem.classList.add(`images_item_${name}`)
     photoItem.innerHTML =
         `<div class="images_photo">
                 <img src=${src} alt="photo">
@@ -114,7 +152,8 @@ function photoItemTemplate(name: string, src: string, isLiked: boolean = false) 
                      <path fill-rule="evenodd" clip-rule="evenodd"
                           d="M19.2444 2.74849C17.5625 1.08549 14.8243 1.08384 13.1403 2.74355L10.9911 4.91203L8.82016 2.76549C7.13407 1.08182 4.40014 1.08935 2.74406 2.74323L2.73878 2.7485C1.93084 3.54736 1.5 4.60323 1.5 5.74496C1.5 6.87098 1.94247 7.93498 2.74468 8.74728L10.9804 16.8905L19.2444 8.71923C20.9215 7.06094 20.9138 4.38283 19.2497 2.75372L19.2444 2.74849ZM10.9804 19L1.6841 9.80806C0.606277 8.72013 0 7.27695 0 5.74496C0 4.21297 0.583822 2.76979 1.6841 1.68186C3.92957 -0.560619 7.61215 -0.560619 9.88007 1.70406L10.9804 2.792L12.0806 1.68186C14.3486 -0.560619 18.0311 -0.560619 20.2991 1.68186C22.567 3.90213 22.567 7.54338 20.2991 9.78586L10.9804 19Z"
                           fill="black"/>
-                 </svg></div>
+                 </svg>
+                 </div>
              </div>`
     return photoItem
 }
@@ -134,7 +173,6 @@ function closeModal() {
     }
 }
 
-
 function setPhotos() {
     let photos;
     photos = localStorage.getItem('photos')
@@ -146,18 +184,41 @@ function setPhotos() {
         photosList.innerHTML = ''
     }
     if (photosList && photos) {
-        photos.forEach((item: { name: string, src: string }) => render(photosList, photoItemTemplate(item.name, item.src)))
+        photos.forEach((item: { name: string, src: string, liked: boolean }) => {
+            render(photosList, photoItemTemplate(item.name, item.src))
+
+            // Слушатель удаления кнопок
+            const deleteButton = document.querySelector(`.images_item_${item.name} .images_itemCross`)
+            if (deleteButton) {
+                deleteButton.addEventListener('click', () => handleDeleteItem(item.name))
+            }
+
+            // Проверка на лайк при загрузке
+            const svgElem = document.querySelector(`.images_item_${item.name} .images_itemLike`)
+            if (svgElem) {
+                if (item.liked) {
+                    svgElem.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M20.2991 1.68186C22.567 3.90213 22.567 7.54338 20.2991 9.78586L10.9804 19L1.6841 9.80806C0.606277 8.72013 0 7.27695 0 5.74496C0 4.21297 0.583823 2.76979 1.6841 1.68186C3.92957 -0.560619 7.61215 -0.560619 9.88007 1.70406L10.9804 2.792L12.0806 1.68186C14.3486 -0.560619 18.0311 -0.560619 20.2991 1.68186Z" fill="black"/>`
+                } else {
+                    svgElem.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M19.2444 2.74849C17.5625 1.08549 14.8243 1.08384 13.1403 2.74355L10.9911 4.91203L8.82016 2.76549C7.13407 1.08182 4.40014 1.08935 2.74406 2.74323L2.73878 2.7485C1.93084 3.54736 1.5 4.60323 1.5 5.74496C1.5 6.87098 1.94247 7.93498 2.74468 8.74728L10.9804 16.8905L19.2444 8.71923C20.9215 7.06094 20.9138 4.38283 19.2497 2.75372L19.2444 2.74849ZM10.9804 19L1.6841 9.80806C0.606277 8.72013 0 7.27695 0 5.74496C0 4.21297 0.583822 2.76979 1.6841 1.68186C3.92957 -0.560619 7.61215 -0.560619 9.88007 1.70406L10.9804 2.792L12.0806 1.68186C14.3486 -0.560619 18.0311 -0.560619 20.2991 1.68186C22.567 3.90213 22.567 7.54338 20.2991 9.78586L10.9804 19Z" fill="black"/>`
+                }
+            }
+
+            // Слушатель лайка
+            const likeButton = document.querySelector(`.images_item_${item.name} .images_itemLike`)
+            if (likeButton) {
+                likeButton.addEventListener('click', () => handleLikeItem(item.name))
+            }
+        })
     }
 }
 
-function addPhoto(){
-    console.log(1)
+function addPhoto() {
     const nameInput: HTMLInputElement | null = document.querySelector('.modalPhoto_name')
     const srcInput: HTMLInputElement | null = document.querySelector('.modalPhoto_src')
-    const a = localStorage.getItem('photos')
+    const photosData = localStorage.getItem('photos')
     if (nameInput && srcInput) {
-        if (a) {
-            const photos = JSON.parse(a)
+        if (photosData) {
+            const photos = JSON.parse(photosData)
             photos.push({name: nameInput.value, src: srcInput.value, liked: false})
             console.log(photos)
             console.log(JSON.stringify(photos))
@@ -172,6 +233,7 @@ function addPhoto(){
             setPhotos()
         }
     }
+    closeModal()
 }
 
 window.onload = () => {
@@ -200,12 +262,6 @@ window.onload = () => {
     if (addItemButton) {
         addItemButton.addEventListener('click', addPhoto)
     }
-
-    // // Слушатель на кнопку удаления новой записи
-    // const deletePhotoButton = document.querySelector('.modalPhoto_button')
-    // if (deletePhotoButton) {
-    //     deletePhotoButton.addEventListener('click', deletePhoto)
-    // }
 
     // Карандашик и крестик - открытие/закрытие модального окна
     const profileButton = document.querySelector('.profile_change')

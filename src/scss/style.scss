@@ -80,6 +80,9 @@ header {
       height: 25px;
       margin-top: 31px;
       cursor: pointer;
+      &:hover{
+        opacity: 0.6;
+      }
 
       svg {
         vertical-align: center;
@@ -99,6 +102,9 @@ header {
     justify-content: center;
     margin-top: 28px;
     cursor: pointer;
+    &:hover{
+      opacity: 0.6;
+    }
 
     .profile_addImage {
       font-size: 32px;
@@ -116,7 +122,18 @@ header {
     background: #FFFFFF;
     border-radius: 10px;
     max-width: 282px;
-
+    .images_itemLike{
+      &:hover{
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
+    .images_itemCross{
+      &:hover{
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
     .images_photo {
       border-radius: 10px 10px 0 0;
       width: 282px;
@@ -161,6 +178,9 @@ header {
     top: -40px;
     height: 0;
     cursor: pointer;
+    &:hover{
+      opacity: 0.6;
+    }
   }
 
   .modals {
@@ -205,6 +225,9 @@ header {
         width: 100%;
         height: 50px;
         font-size: 18px;
+        &:hover{
+          opacity: 0.8;
+        }
       }
     }
   }
