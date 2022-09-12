@@ -1,0 +1,21 @@
+// Стили хедера страницы
+
+header {
+  color: white;
+
+  .header_container {
+    border-bottom: 1px solid #545454;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    .header_brand {
+      font-size: 33px;
+      font-weight: 500;
+    }
+
+    .header_country {
+      font-size: 12px;
+      vertical-align: top;
+    }
+  }
+}

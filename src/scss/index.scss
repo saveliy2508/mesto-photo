@@ -1,0 +1,28 @@
+@import 'null.scss', 'modals.scss', 'profile.scss', 'footer.scss', 'photos.scss', 'header.scss';
+
+//Базовые стили страницы
+
+// шрифт не работает
+@font-face {
+  font-family: "Inter";
+  src: url('./../assets/fonts/Inter-Regular.ttf') format('truetype');
+}
+
+body {
+  background-color: black;
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 20px;
+}

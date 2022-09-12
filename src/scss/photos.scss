@@ -1,0 +1,44 @@
+// Стили всех изображений
+
+.images_container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 17px;
+  flex-wrap: wrap;
+
+  .images_item {
+    background: #FFFFFF;
+    border-radius: 10px;
+    max-width: 282px;
+    .images_itemLike{
+      &:hover{
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
+    .images_itemCross{
+      &:hover{
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
+    .images_photo {
+      border-radius: 10px 10px 0 0;
+      width: 282px;
+      height: 282px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+      }
+    }
+
+    .images_itemLabel {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
