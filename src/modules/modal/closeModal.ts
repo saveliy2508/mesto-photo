@@ -6,10 +6,16 @@ function closeModal() {
     const modalWrapper = document.querySelector('.modals-wrapper')
     const modalProfile = document.querySelector('.modalProfile')
     const modalPhoto = document.querySelector('.modalPhoto')
-    if (modalWrapper && modalProfile && modalPhoto) {
+    const modalBigPhoto = document.querySelector('.modalBig')
+    if (modalWrapper && modalProfile && modalPhoto && modalBigPhoto) {
         modalWrapper.classList.add('modalHide')
         modalProfile.classList.add('modalHide')
         modalPhoto.classList.add('modalHide')
+        modalBigPhoto.classList.add('modalHide')
+    }
+    const modals = document.querySelector('.modals')
+    if (modals) {
+        modals.classList.remove('modals--bigPhoto')
     }
 }
 

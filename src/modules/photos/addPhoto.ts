@@ -13,13 +13,15 @@ function addPhoto() {
         //Если в localStorage что то было, то берем старое значение и добавляем
         if (photosData) {
             const photos = JSON.parse(photosData)
-            photos.push({name: nameInput.value, src: srcInput.value, liked: false})
+            const date = new Date()
+            photos.push({id: date.getTime(), name: nameInput.value, src: srcInput.value, liked: false})
             localStorage.setItem('photos', JSON.stringify(photos))
             setPhotos()
         // Если ничего не было, то создаем массив и добавляем в него
         } else {
             const photos = []
-            photos.push({name: nameInput.value, src: srcInput.value, liked: false})
+            const date = new Date()
+            photos.push({id: date.getTime(), name: nameInput.value, src: srcInput.value, liked: false})
             localStorage.setItem('photos', JSON.stringify(photos))
             setPhotos()
         }

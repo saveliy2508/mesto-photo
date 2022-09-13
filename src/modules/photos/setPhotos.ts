@@ -2,6 +2,7 @@ import handleDeleteItem from "./handleDeleteItem";
 import render from "../common/render";
 import handleLikeItem from "./handleLikeItem";
 import photoItemTemplate from "./photoItemTamplate";
+import openBigPhoto from './openBigPhoto'
 
 /**
  * Функция перезагружающая список фотокарточек
@@ -18,17 +19,17 @@ function setPhotos() {
         photosList.innerHTML = ''
     }
     if (photosList && photos) {
-        photos.forEach((item: { name: string, src: string, liked: boolean }) => {
-            render(photosList, photoItemTemplate(item.name, item.src))
+        photos.forEach((item: { name: string, src: string, liked: boolean, id: number }) => {
+            render(photosList, photoItemTemplate(item.name, item.src, item.id))
 
             // Слушатель удаления кнопок
-            const deleteButton = document.querySelector(`.images_item_${item.name} .images_itemCross`)
+            const deleteButton = document.querySelector(`.images_item_${item.id} .images_itemCross`)
             if (deleteButton) {
-                deleteButton.addEventListener('click', () => handleDeleteItem(item.name))
+                deleteButton.addEventListener('click', () => handleDeleteItem(item.id))
             }
 
             // Проверка на лайк при загрузке
-            const svgElem = document.querySelector(`.images_item_${item.name} .images_itemLike`)
+            const svgElem = document.querySelector(`.images_item_${item.id} .images_itemLike`)
             if (svgElem) {
                 if (item.liked) {
                     svgElem.innerHTML = `<path fill-rule="evenodd" clip-rule="evenodd" d="M20.2991 1.68186C22.567 3.90213 22.567 7.54338 20.2991 9.78586L10.9804 19L1.6841 9.80806C0.606277 8.72013 0 7.27695 0 5.74496C0 4.21297 0.583823 2.76979 1.6841 1.68186C3.92957 -0.560619 7.61215 -0.560619 9.88007 1.70406L10.9804 2.792L12.0806 1.68186C14.3486 -0.560619 18.0311 -0.560619 20.2991 1.68186Z" fill="black"/>`
@@ -38,9 +39,14 @@ function setPhotos() {
             }
 
             // Слушатель лайка
-            const likeButton = document.querySelector(`.images_item_${item.name} .images_itemLike`)
+            const likeButton = document.querySelector(`.images_item_${item.id} .images_itemLike`)
             if (likeButton) {
-                likeButton.addEventListener('click', () => handleLikeItem(item.name))
+                likeButton.addEventListener('click', () => handleLikeItem(item.id))
+            }
+
+            const photoImage = document.querySelector(`.images_item_${item.id} .images_photo`)
+            if(photoImage){
+                photoImage.addEventListener('click', () => openBigPhoto(item.src))
             }
         })
     }

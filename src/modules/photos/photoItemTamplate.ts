@@ -2,10 +2,10 @@
  * Функция возвращающая шаблон фотокарточки
  */
 
-function photoItemTemplate(name: string, src: string) {
+function photoItemTemplate(name: string, src: string, id: number) {
     const photoItem = document.createElement('div')
     photoItem.classList.add(`images_item`)
-    photoItem.classList.add(`images_item_${name}`)
+    photoItem.classList.add(`images_item_${id}`)
     photoItem.innerHTML =
         `<div class="images_photo">
                 <img src=${src} alt="photo">

@@ -17,7 +17,8 @@
     top: -40px;
     height: 0;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
       opacity: 0.6;
     }
   }
@@ -30,11 +31,16 @@
     border-radius: 10px;
     margin: 0 20px;
 
+
+
     .modal {
       padding: 35px;
+
+
       .modalPhoto_button {
         margin-top: 40px;
       }
+
       .modal_header {
         font-weight: 900;
         font-size: 24px;
@@ -65,11 +71,22 @@
         width: 100%;
         height: 50px;
         font-size: 18px;
-        &:hover{
+
+        &:hover {
           opacity: 0.8;
         }
       }
     }
+
+    .modalBig{
+      height: 100%;
+    }
+  }
+  .modals--bigPhoto {
+    height: 80%;
+    width: 80%;
+    position: absolute;
+    top: 10%;
   }
 }
 

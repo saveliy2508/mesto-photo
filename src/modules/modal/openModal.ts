@@ -18,6 +18,13 @@ function openModal(modalType: string) {
             modalPhoto.classList.remove('modalHide')
         }
     }
+    if (modalType === 'bigPhoto') {
+        const modalBigPhoto = document.querySelector('.modalBig')
+        if (modalWrapper && modalBigPhoto) {
+            modalWrapper.classList.remove('modalHide')
+            modalBigPhoto.classList.remove('modalHide')
+        }
+    }
 }
 
 export default openModal
