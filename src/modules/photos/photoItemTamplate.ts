@@ -7,12 +7,12 @@ function photoItemTemplate(name: string, src: string, id: number) {
     photoItem.classList.add(`images_item`)
     photoItem.classList.add(`images_item_${id}`)
     photoItem.innerHTML =
-        `<div class="images_photo">
+            `<div class="images_photo">
                 <img src=${src} alt="photo">
              </div>
              <div class="images_itemLabel">
                  <span class="images_itemName">${name}</span>
-                 <div>
+                 <div class="images_itemControls">
                  <svg class="images_itemCross" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                  width="22px" height="19px" viewBox="0 0 503.021 503.021"
                  style="enable-background:new 0 0 503.021 503.021;"

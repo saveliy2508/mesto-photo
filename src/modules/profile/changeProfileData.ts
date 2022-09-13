@@ -10,6 +10,7 @@ function changeProfileData() {
     if (nameInput && nameElement && nameInput.value) {
         nameElement.innerHTML = nameInput.value
         localStorage.setItem('name', nameInput.value)
+        nameInput.value = ''
     }
     //Установка описания
     const descriptionInput: HTMLInputElement | null = document.querySelector('.modalProfile_description')
@@ -17,13 +18,23 @@ function changeProfileData() {
     if (descriptionInput && descriptionElement && descriptionInput.value) {
         descriptionElement.innerHTML = descriptionInput.value
         localStorage.setItem('description', descriptionInput.value)
+        descriptionInput.value = ''
     }
     //Установка картинки
     const avatarInput: HTMLInputElement | null = document.querySelector('.modalProfile_avatar')
     const avatarElement = document.querySelector('.profile_userPhoto')
     if (avatarInput && avatarElement && avatarInput.value) {
-        avatarElement.setAttribute('src', avatarInput.value)
-        localStorage.setItem('photo', avatarInput.value)
+        const img = new Image()
+        img.src = avatarInput.value
+        img.onload = () => {
+            avatarElement.setAttribute('src', avatarInput.value)
+            localStorage.setItem('photo', avatarInput.value)
+            avatarInput.value = ''
+        }
+        img.onerror = () => {
+            alert('Изображение не найдено')
+            avatarInput.value = ''
+        }
     }
     closeModal()
 }

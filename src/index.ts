@@ -16,9 +16,12 @@ window.onload = () => {
     setPhotos()
 
     // Установка новых значений профиля в найстройках
-    const profileChangeButton = document.querySelector('.modalProfile_button')
-    if (profileChangeButton) {
-        profileChangeButton.addEventListener('click', changeProfileData)
+    const changeProfileForm: HTMLFormElement | null = document.querySelector('.modalProfile form')
+    if (changeProfileForm) {
+        changeProfileForm.onsubmit = function() {
+            changeProfileData()
+            return false
+        }
     }
 
     // Слушатель на плюсик добавления записи
@@ -30,9 +33,12 @@ window.onload = () => {
     }
 
     // Слушатель на кнопку добавления новой записи в модальном окне
-    const addItemButton = document.querySelector('.modalPhoto_button')
-    if (addItemButton) {
-        addItemButton.addEventListener('click', addPhoto)
+    const addPhotoForm: HTMLFormElement | null = document.querySelector('.modalPhoto form')
+    if (addPhotoForm) {
+        addPhotoForm.onsubmit = function(){
+            addPhoto()
+            return false
+        }
     }
 
     // Карандашик - открытие модального окна

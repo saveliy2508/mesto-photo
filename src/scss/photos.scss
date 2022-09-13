@@ -1,15 +1,30 @@
 // Стили всех изображений
+//
+//.images{
+//  display: flex;
+//  justify-content: center;
+//  width: 100%;
+//}
 
 .images_container {
   display: flex;
-  justify-content: flex-start;
-  gap: 17px;
+  justify-content: start;
   flex-wrap: wrap;
+  gap: 17px;
 
   .images_item {
     background: #FFFFFF;
     border-radius: 10px;
     max-width: 282px;
+    display: inline-block;
+    .images_itemControls {
+      display: flex;
+      gap: 4px;
+    }
+    .images_itemName {
+      word-break: break-word;
+      padding-right: 5px;
+    }
     .images_itemLike{
       &:hover{
         opacity: 0.5;

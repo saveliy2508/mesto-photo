@@ -2,7 +2,13 @@
  * Функция открывает модальное окно и навешивает слушатель на крестик, который его закрывает
  * (после нажатия на крестик его слушатель удаляется)
  */
+
 function openModal(modalType: string) {
+    const htmlTag = document.querySelector('html')
+    if (htmlTag) {
+        htmlTag.style.overflow = 'hidden'
+    }
+
     const modalWrapper = document.querySelector('.modals-wrapper')
     if (modalType === 'profile') {
         const modalProfile = document.querySelector('.modalProfile')

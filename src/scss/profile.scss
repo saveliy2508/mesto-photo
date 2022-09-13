@@ -25,9 +25,13 @@
         font-size: 42px;
         font-weight: 500;
         margin: 0 35px 15px 0;
+        word-break: break-word;
+        padding-right: 5px;
       }
 
       .profile_description {
+        word-break: break-word;
+        padding-right: 5px;
       }
 
     }
@@ -51,7 +55,7 @@
   }
 
   .profile_control {
-    width: 150px;
+    min-width: 150px;
     height: 50px;
     border: 2px solid #FFFFFF;
     border-radius: 2px;
@@ -60,6 +64,7 @@
     justify-content: center;
     margin-top: 28px;
     cursor: pointer;
+    margin-left: 20px;
     &:hover{
       opacity: 0.6;
     }
