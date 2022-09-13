@@ -48,7 +48,6 @@ function setPhotos() {
             }
         })
     }
-    console.log(photos.length, photosList)
     if (photosList && photos.length === 0) {
         photosList.innerHTML = 'Загрузите свое первое изображение нажав на плюсик...'
     }

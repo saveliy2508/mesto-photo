@@ -2,7 +2,10 @@
 //
 .images{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  @media (max-width: 935px) {
+    justify-content: center;
+  }
 }
 
 .images_container {
@@ -11,10 +14,10 @@
   flex-wrap: wrap;
   gap: 17px;
   color: white;
-  @media (max-width: 920px) {
+  @media (max-width: 935px) {
     width: 581px;
   }
-  @media (max-width: 620px) {
+  @media (max-width: 640px) {
     width: 282px;
   }
 
