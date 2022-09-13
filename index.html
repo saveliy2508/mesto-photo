@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mesto</title>
+<script defer src="bundle.js"></script></head>
+<body>
+<header class="header">
+    <div class="header_container container">
+        <span class="header_brand">Mesto</span>
+        <span class="header_country">Russia</span>
+    </div>
+</header>
+<main>
+    <section class="profile">
+        <div class="profile_container container">
+            <div class="profile_info">
+                <img class="profile_userPhoto" src="https://нашчат.рф/img/42.jpg?1619891588" alt="user_photo">
+                <div class="profile_infoText">
+                    <div class="profile_nameContainer">
+                        <div class="profile_name"></div>
+                        <div class="profile_change">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 1.32827L2.60377 8.7666L1.28302 7.41936L8.66038 0L10 1.32827ZM0 10L1.96226 9.41177L0.584906 8.08349L0 10Z"
+                                      fill="white"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="profile_description"></div>
+                </div>
+
+            </div>
+            <div class="profile_control">
+                <span class="profile_addImage">+</span>
+            </div>
+        </div>
+    </section>
+    <section class="images container">
+        <div class="images_container">
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="footer_container container">
+        <div>@ 2022 Mesto Russia</div>
+    </div>
+</footer>
+
+<aside class="modals-wrapper modalHide">
+    <div class="modals">
+        <div class="close">
+            <svg class="modals_cross" width="32" height="32" viewBox="0 0 32 32" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 28.8L19.2 16L32 3.2L28.8 0L16 12.8L3.2 0L0 3.2L12.8 16L0 28.8L3.2 32L16 19.2L28.8 32L32 28.8Z"
+                      fill="white"/>
+            </svg>
+        </div>
+        <section class="modalProfile modal modalHide">
+            <div class="modal_header">
+                Редактировать профиль
+            </div>
+            <form>
+                <label>
+                    <input class="modalProfile_name" type="text" placeholder="Имя">
+                </label>
+                <label>
+                    <input class="modalProfile_description" type="text" placeholder="Описание">
+                </label>
+                <label>
+                    <input class="modalProfile_avatar" type="text" placeholder="Ссылка на изображение">
+                </label>
+                <button class="modalProfile_button">Сохранить</button>
+            </form>
+        </section>
+        <section class="modalPhoto modal modalHide">
+            <div class="modal_header">
+                Добавить фото
+            </div>
+            <form>
+                <label>
+                    <input class="modalPhoto_name" type="text" placeholder="Название">
+                </label>
+                <label>
+                    <input class="modalPhoto_src" type="text" placeholder="url картинки">
+                </label>
+                <button class="modalPhoto_button">Добавить</button>
+            </form>
+        </section>
+        <section class="modalBig modalHide">
+        </section>
+    </div>
+</aside>
+</body>
+</html>
