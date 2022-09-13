@@ -1,18 +1,25 @@
 // Стили всех изображений
 //
-//.images{
-//  display: flex;
-//  justify-content: center;
-//  width: 100%;
-//}
+.images{
+  display: flex;
+  justify-content: center;
+}
 
 .images_container {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 17px;
+  color: white;
+  @media (max-width: 920px) {
+    width: 581px;
+  }
+  @media (max-width: 620px) {
+    width: 282px;
+  }
 
   .images_item {
+    color: black;
     background: #FFFFFF;
     border-radius: 10px;
     max-width: 282px;

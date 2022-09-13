@@ -11,8 +11,6 @@ function setProfileData() {
     if (photoElement) {
         if (photo) {
             photoElement.setAttribute('src', photo)
-        } else {
-            photoElement.setAttribute('src', 'cdd6970e3d9f228be0e9.jpg')
         }
     }
 

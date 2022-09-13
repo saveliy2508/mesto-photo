@@ -15,10 +15,8 @@ function setPhotos() {
         photos = JSON.parse(photos)
     }
     const photosList = document.querySelector('.images_container')
-    if (photosList) {
-        photosList.innerHTML = ''
-    }
     if (photosList && photos) {
+        photosList.innerHTML = ''
         photos.forEach((item: { name: string, src: string, liked: boolean, id: number }) => {
             render(photosList, photoItemTemplate(item.name, item.src, item.id))
 
@@ -45,11 +43,16 @@ function setPhotos() {
             }
 
             const photoImage = document.querySelector(`.images_item_${item.id} .images_photo`)
-            if(photoImage){
+            if (photoImage) {
                 photoImage.addEventListener('click', () => openBigPhoto(item.src))
             }
         })
     }
+    console.log(photos.length, photosList)
+    if (photosList && photos.length === 0) {
+        photosList.innerHTML = 'Загрузите свое первое изображение нажав на плюсик...'
+    }
 }
+
 
 export default setPhotos
