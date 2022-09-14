@@ -48,7 +48,7 @@ function setPhotos() {
             }
         })
     }
-    if (photosList && photos.length === 0) {
+    if (photosList && (photos?.length === 0 || photos === null)) {
         photosList.innerHTML = 'Загрузите свое первое изображение нажав на плюсик...'
     }
 }
