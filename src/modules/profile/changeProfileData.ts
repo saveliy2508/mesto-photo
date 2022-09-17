@@ -8,7 +8,7 @@ function changeProfileData() {
     const nameInput: HTMLInputElement | null = document.querySelector('.modalProfile_name')
     const nameElement = document.querySelector('.profile_name')
     if (nameInput && nameElement && nameInput.value) {
-        nameElement.innerHTML = nameInput.value
+        nameElement.textContent = nameInput.value
         localStorage.setItem('name', nameInput.value)
         nameInput.value = ''
     }
@@ -16,7 +16,7 @@ function changeProfileData() {
     const descriptionInput: HTMLInputElement | null = document.querySelector('.modalProfile_description')
     const descriptionElement = document.querySelector('.profile_description')
     if (descriptionInput && descriptionElement && descriptionInput.value) {
-        descriptionElement.innerHTML = descriptionInput.value
+        descriptionElement.textContent = descriptionInput.value
         localStorage.setItem('description', descriptionInput.value)
         descriptionInput.value = ''
     }

@@ -18,9 +18,9 @@ function setProfileData() {
     const nameElement = document.querySelector('.profile_name')
     if (nameElement) {
         if (name) {
-            nameElement.innerHTML = name
+            nameElement.textContent = name
         } else {
-            nameElement.innerHTML = 'Установите имя'
+            nameElement.textContent = 'Установите имя'
         }
     }
 
@@ -28,9 +28,9 @@ function setProfileData() {
     const descriptionElement = document.querySelector('.profile_description')
     if (descriptionElement) {
         if (description) {
-            descriptionElement.innerHTML = description
+            descriptionElement.textContent = description
         } else {
-            descriptionElement.innerHTML = 'Установите описание'
+            descriptionElement.textContent = 'Установите описание'
         }
     }
 }
