@@ -3,6 +3,7 @@ import render from "../common/render";
 import handleLikeItem from "./handleLikeItem";
 import photoItemTemplate from "./photoItemTamplate";
 import openBigPhoto from './openBigPhoto'
+import {IPhoto} from "../../types/interfaces";
 
 /**
  * Функция перезагружающая список фотокарточек
@@ -17,7 +18,7 @@ function setPhotos() {
     const photosList = document.querySelector('.images_container')
     if (photosList && photos) {
         photosList.innerHTML = ''
-        photos.forEach((item: { name: string, src: string, liked: boolean, id: number }) => {
+        photos.forEach((item: IPhoto) => {
             render(photosList, photoItemTemplate(item.name, item.src, item.id))
 
             // Слушатель удаления кнопок
